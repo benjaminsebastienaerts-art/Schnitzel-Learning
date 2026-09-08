@@ -1,0 +1,17 @@
+{
+  "name": "Schnitzel Learning",
+  "short_name": "Schnitzel",
+  "description": "Woordjes leren met herhaling en vrij oefenen.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1b0836",
+  "theme_color": "#1b0836",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

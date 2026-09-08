@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Schnitzel Learning</title>
+    <meta name="theme-color" content="#1b0836" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Schnitzel Learning" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <div>
+            <h1>Schnitzel Learning</h1>
+            <p>leren op jouw tempo</p>
+          </div>
+        </div>
+
+        <nav class="tabs" aria-label="Hoofdmenu">
+          <button class="tab active" data-view="learn">Home</button>
+          <button class="tab" data-view="practice">Oefenen</button>
+          <button class="tab" data-view="library">Lessen</button>
+          <button class="tab" data-view="import">Nieuw</button>
+        </nav>
+
+        <section class="filters" aria-label="Selectie">
+          <label class="search-box">
+            <span>Zoeken</span>
+            <input id="searchBox" placeholder="Zoeken" />
+          </label>
+          <label>
+            <span>Boek</span>
+            <select id="bookFilter"></select>
+          </label>
+          <label>
+            <span>Onderdeel</span>
+            <select id="sectionFilter"></select>
+          </label>
+        </section>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="scopeLabel">Alle onderdelen</p>
+            <h2 id="viewTitle">Herhalen</h2>
+          </div>
+          <div class="stats">
+            <div><strong id="dueCount">0</strong><span>nu</span></div>
+            <div><strong id="cardCount">0</strong><span>kaartjes</span></div>
+            <div><strong id="streakCount">0</strong><span>reeks</span></div>
+          </div>
+        </header>
+
+        <section class="view active" id="learnView">
+          <div class="study-layout">
+            <div class="toolbar mode-toolbar">
+              <label>
+                Manier
+                <select id="reviewMode">
+                  <option value="card">Kaartjes</option>
+                  <option value="type">Typen</option>
+                </select>
+              </label>
+              <label>
+                Richting
+                <select id="reviewDirection">
+                  <option value="langToNl">Taal -> NL</option>
+                  <option value="nlToLang">NL -> taal</option>
+                </select>
+              </label>
+            </div>
+            <section class="flashcard" id="reviewCard" tabindex="0">
+              <p id="reviewMeta">Kies een onderdeel</p>
+              <div class="card-face" id="reviewQuestion">Geen kaartjes klaar</div>
+              <div class="hint hidden" id="reviewHint"></div>
+              <div class="type-row hidden" id="reviewTypeRow">
+                <input id="reviewInput" autocomplete="off" spellcheck="false" placeholder="Typ antwoord" />
+                <button id="checkReviewBtn">Check</button>
+              </div>
+              <div class="result hidden" id="reviewResult"></div>
+              <div class="card-answer hidden" id="reviewAnswer"></div>
+              <button class="ghost" id="showAnswerBtn">Toon antwoord</button>
+            </section>
+            <div class="grade-row hidden" id="gradeRow">
+              <button data-grade="again">Opnieuw</button>
+              <button data-grade="hard">Moeilijk</button>
+              <button data-grade="good">Goed</button>
+              <button data-grade="easy">Makkelijk</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="practiceView">
+          <div class="toolbar">
+            <label>
+              Manier
+              <select id="practiceMode">
+                <option value="card">Kaartjes</option>
+                <option value="type">Typen</option>
+              </select>
+            </label>
+            <label>
+              Richting
+              <select id="practiceDirection">
+                <option value="langToNl">Taal -> NL</option>
+                <option value="nlToLang">NL -> taal</option>
+              </select>
+            </label>
+            <button id="shuffleBtn">Hussel</button>
+          </div>
+          <section class="flashcard" id="practiceCard" tabindex="0">
+            <p id="practiceMeta">Vrij oefenen</p>
+            <div class="card-face" id="practiceQuestion">Geen kaartjes gekozen</div>
+            <div class="hint hidden" id="practiceHint"></div>
+            <div class="type-row hidden" id="practiceTypeRow">
+              <input id="practiceInput" autocomplete="off" spellcheck="false" placeholder="Typ antwoord" />
+              <button id="checkPracticeBtn">Check</button>
+            </div>
+            <div class="result hidden" id="practiceResult"></div>
+            <div class="card-answer hidden" id="practiceAnswer"></div>
+            <button class="ghost" id="practiceShowBtn">Toon antwoord</button>
+          </section>
+          <div class="grade-row">
+            <button id="prevPracticeBtn">Vorige</button>
+            <button id="nextPracticeBtn">Volgende</button>
+          </div>
+        </section>
+
+        <section class="view" id="libraryView">
+          <div class="library-grid" id="libraryGrid"></div>
+        </section>
+
+        <section class="view" id="importView">
+          <div class="import-panel">
+            <div>
+              <h3>Nieuwe woordjes</h3>
+              <p>Plak twee kolommen: woord in de taal en Nederlandse betekenis. Hoofdstukken ontstaan zodra je ze hier toevoegt.</p>
+            </div>
+            <div class="form-grid">
+              <label>
+                Boek
+                <select id="importBook"></select>
+              </label>
+              <label>
+                Onderdeel
+                <input id="importSection" placeholder="bijv. Apprendre 4" />
+              </label>
+              <label>
+                Taal
+                <select id="importLanguage">
+                  <option value="latin">Latijn</option>
+                  <option value="french">Frans</option>
+                  <option value="greek">Grieks</option>
+                  <option value="german">Duits</option>
+                  <option value="other">Andere taal</option>
+                </select>
+              </label>
+            </div>
+            <textarea id="importText" spellcheck="false" placeholder="Woord in de taal&#9;Nederlandse betekenis&#10;la pomme&#9;de appel"></textarea>
+            <div class="toolbar">
+              <button id="importBtn">Importeer</button>
+              <button id="exportBtn">Exporteer backup</button>
+              <button id="resetBtn" class="danger">Alles leegmaken</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
