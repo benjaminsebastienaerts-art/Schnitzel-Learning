@@ -112,23 +112,47 @@
                 <option value="nlToLang">NL -> taal</option>
               </select>
             </label>
-            <button id="shuffleBtn">Hussel</button>
+            <button id="shuffleBtn">Herstart sessie</button>
           </div>
-          <section class="flashcard" id="practiceCard" tabindex="0">
-            <p id="practiceMeta">Vrij oefenen</p>
-            <div class="card-face" id="practiceQuestion">Geen kaartjes gekozen</div>
-            <div class="hint hidden" id="practiceHint"></div>
-            <div class="type-row hidden" id="practiceTypeRow">
-              <input id="practiceInput" autocomplete="off" spellcheck="false" placeholder="Typ antwoord" />
-              <button id="checkPracticeBtn">Check</button>
+          <div class="study-layout" id="practiceSession">
+            <p class="session-progress" id="practiceProgress"></p>
+            <section class="flashcard" id="practiceCard" tabindex="0">
+              <p id="practiceMeta">Vrij oefenen</p>
+              <div class="card-face" id="practiceQuestion">Geen kaartjes gekozen</div>
+              <div class="hint hidden" id="practiceHint"></div>
+              <div class="type-row hidden" id="practiceTypeRow">
+                <input id="practiceInput" autocomplete="off" spellcheck="false" placeholder="Typ antwoord" />
+                <button id="checkPracticeBtn">Check</button>
+              </div>
+              <div class="result hidden" id="practiceResult"></div>
+              <div class="card-answer hidden" id="practiceAnswer"></div>
+              <button class="ghost" id="practiceShowBtn">Toon antwoord</button>
+            </section>
+            <div class="grade-row hidden" id="practiceJudgeRow">
+              <button class="judge-wrong" id="practiceWrongBtn">✗ Fout</button>
+              <button class="judge-correct" id="practiceCorrectBtn">✓ Goed</button>
             </div>
-            <div class="result hidden" id="practiceResult"></div>
-            <div class="card-answer hidden" id="practiceAnswer"></div>
-            <button class="ghost" id="practiceShowBtn">Toon antwoord</button>
-          </section>
-          <div class="grade-row">
-            <button id="prevPracticeBtn">Vorige</button>
-            <button id="nextPracticeBtn">Volgende</button>
+            <div class="grade-row hidden" id="practiceNextRow">
+              <button id="practiceNextBtn">Volgende</button>
+            </div>
+          </div>
+          <div class="practice-summary hidden" id="practiceSummary">
+            <h3 id="summaryTitle">Sessie klaar!</h3>
+            <p id="summaryStats"></p>
+            <div class="summary-cols">
+              <div>
+                <h4>Goed (<span id="summaryCorrectCount">0</span>)</h4>
+                <ul class="summary-list" id="summaryCorrectList"></ul>
+              </div>
+              <div>
+                <h4>Fout (<span id="summaryWrongCount">0</span>)</h4>
+                <ul class="summary-list" id="summaryWrongList"></ul>
+              </div>
+            </div>
+            <div class="toolbar">
+              <button id="retryWrongBtn">Fout opnieuw leren</button>
+              <button id="restartAllBtn">Opnieuw alle woordjes</button>
+            </div>
           </div>
         </section>
 
