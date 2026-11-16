@@ -12,18 +12,30 @@
   --hot: #ff5a45;
   --good: #7be0a9; --near: #ffe27a; --bad: #ff9a8a;
   --on-fill: #17120c;
+  --paper: #fffdf5;                /* vaste crèmekleur voor knoppen/labels op felle vlakken */
+  --rim: var(--edge);              /* rand van de blokken zelf */
+  --rim-shadow: var(--shadow);     /* schaduw van de blokken zelf */
+  --line: var(--edge);             /* zachtere rand voor rustige panelen */
+  --line-shadow: var(--shadow);
+  --line-strong: var(--edge);      /* velden en keuzeknoppen */
   --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
   --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #1b1610; --dots: #2a2218; --card: #2b241a; --ink: #fbf3df; --muted: #bdb29b; --edge: #fbf3df; --shadow: #000;
-    --field: #1b1610; --hot: #ff6b57; color-scheme: dark;
+    --bg: #2a2218; --dots: #362c1f; --card: #3a3024; --ink: #fbf3df; --muted: #d2c7b0; --edge: #fbf3df; --shadow: #17110a;
+    --field: #2e251a; --hot: #ff6b57; color-scheme: dark;
+    /* donker: felle blokken houden een crèmekleurige rand met een warme gouden schaduw; rustige panelen een zachtere rand */
+    --rim-shadow: #947a38;
+    --line: #6a5b44; --line-shadow: #17110a; --line-strong: #a99a78;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #1b1610; --dots: #2a2218; --card: #2b241a; --ink: #fbf3df; --muted: #bdb29b; --edge: #fbf3df; --shadow: #000;
-  --field: #1b1610; --hot: #ff6b57; color-scheme: dark;
+  --bg: #2a2218; --dots: #362c1f; --card: #3a3024; --ink: #fbf3df; --muted: #d2c7b0; --edge: #fbf3df; --shadow: #17110a;
+  --field: #2e251a; --hot: #ff6b57; color-scheme: dark;
+  /* donker: felle blokken houden een crèmekleurige rand met een warme gouden schaduw; rustige panelen een zachtere rand */
+  --rim-shadow: #947a38;
+  --line: #6a5b44; --line-shadow: #17110a; --line-strong: #a99a78;
 }
 * { box-sizing: border-box; }
 body {
@@ -42,7 +54,10 @@ button { cursor: pointer; }
 :focus-visible { outline: 4px solid var(--hot); outline-offset: 2px; }
 
 /* bouwstenen */
-.sticker { background: var(--card); border: 3px solid var(--edge); border-radius: 18px; box-shadow: 5px 5px 0 var(--shadow); }
+.sticker { background: var(--card); border: 3px solid var(--rim); border-radius: 18px; box-shadow: 5px 5px 0 var(--rim-shadow); }
+.sticker.panel:not(.q), .sticker.chapter, .sticker.empty { border-color: var(--line); box-shadow: 5px 5px 0 var(--line-shadow); }
+/* Felle vlakken: alles erin gedraagt zich als in de lichte modus (donkere tekst, crème knoppen), ook in de donkere modus */
+.levelcard, .subject, .q, .score, .face, .feedback { --card: var(--paper); --ink: #17120c; --edge: #17120c; --shadow: #17120c; --field: #fff6d6; }
 .btn {
   background: var(--card); border: 3px solid var(--edge); border-radius: 14px; box-shadow: 3px 3px 0 var(--shadow);
   padding: 8px 16px; min-height: 46px; font-weight: 700; transition: transform .08s, box-shadow .08s;
@@ -61,11 +76,11 @@ button { cursor: pointer; }
 .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
 .field { display: flex; flex-direction: column; gap: 4px; flex: 1 1 160px; min-width: 0; }
 input[type=text], textarea {
-  background: var(--field); border: 3px solid var(--edge); border-radius: 12px; padding: 8px 12px; width: 100%; min-height: 46px;
+  background: var(--field); border: 3px solid var(--line-strong); border-radius: 12px; padding: 8px 12px; width: 100%; min-height: 46px;
 }
 textarea { min-height: 120px; resize: vertical; }
 input[type=text]:focus, textarea:focus { outline: none; box-shadow: 4px 4px 0 var(--hot); }
-.pill { display: inline-flex; align-items: center; gap: 6px; border: 3px solid var(--edge); border-radius: 99px; padding: 2px 12px; font-weight: 700; background: var(--card); font-variant-numeric: tabular-nums; }
+.pill { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; border: 3px solid var(--edge); border-radius: 99px; padding: 2px 12px; font-weight: 700; background: var(--card); font-variant-numeric: tabular-nums; }
 
 /* bovenbalk */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -112,8 +127,8 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 4px 4px 0 va
 .choices { display: flex; gap: 10px; flex-wrap: wrap; }
 .choice { position: relative; }
 .choice input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
-.choice span { display: block; border: 3px solid var(--edge); border-radius: 12px; padding: 6px 14px; min-height: 42px; background: var(--card); font-weight: 600; display: flex; align-items: center; }
-.choice input:checked + span { background: var(--c1); color: #17120c; box-shadow: 3px 3px 0 var(--shadow); font-weight: 700; }
+.choice span { display: block; border: 3px solid var(--line-strong); border-radius: 12px; padding: 6px 14px; min-height: 42px; background: var(--card); font-weight: 600; display: flex; align-items: center; }
+.choice input:checked + span { background: var(--c1); color: #17120c; border-color: var(--edge); box-shadow: 3px 3px 0 var(--shadow); font-weight: 700; }
 .choice input:focus-visible + span { outline: 4px solid var(--hot); outline-offset: 2px; }
 .chapters { display: flex; flex-direction: column; gap: 16px; }
 .chapter { overflow: hidden; }
@@ -124,7 +139,7 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 4px 4px 0 va
 .chapter.open .caret { transform: rotate(90deg); }
 .cmeta { display: flex; gap: 10px; align-items: center; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .cmeta .bar { flex: 1; max-width: 160px; }
-.cbody { border-top: 3px solid var(--edge); padding: 16px; display: flex; flex-direction: column; gap: 18px; background: var(--field); }
+.cbody { border-top: 3px solid var(--line); padding: 16px; display: flex; flex-direction: column; gap: 18px; background: var(--field); }
 .cbody h4 { margin: 0; font-family: var(--font-display); font-size: 18px; }
 .wordhead, .wordrow { display: grid; grid-template-columns: 1fr 1fr auto auto; gap: 8px; align-items: center; }
 .wordhead { padding-bottom: 4px; }
