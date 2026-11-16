@@ -5,6 +5,7 @@ Woordjes leren met typen of kaartjes, met XP, levels en een dagelijkse streak. W
 ## Als app installeren
 
  Open deze link: https://tbalder.github.io/Schnitzel-Learning/ 
+ dus niet de zip web-app openen
 
 - **iPhone/iPad (Safari):** Deel-knop → *Zet op beginscherm*
 - **Android (Chrome):** menu (⋮) → *App installeren* of *Toevoegen aan startscherm*
