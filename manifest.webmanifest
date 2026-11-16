@@ -1,17 +1,19 @@
 {
+  "id": "./",
   "name": "Schnitzel Learning",
   "short_name": "Schnitzel",
-  "description": "Woordjes leren met herhaling en vrij oefenen.",
-  "start_url": "index.html",
+  "description": "Woordjes leren met herhaling, XP en levels.",
+  "lang": "nl",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#1b0836",
-  "theme_color": "#1b0836",
+  "orientation": "any",
+  "background_color": "#ffd84a",
+  "theme_color": "#ffd84a",
   "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }

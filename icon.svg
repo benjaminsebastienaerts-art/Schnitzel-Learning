@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#1b0836"/>
-  <circle cx="256" cy="256" r="164" fill="#ffffff"/>
-  <text x="256" y="318" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="220" font-weight="900" fill="#241039">S</text>
+  <rect width="512" height="512" rx="112" fill="#ffd84a"/>
+  <svg x="66.0" y="66.0" width="380" height="380" viewBox="0 0 64 64"><path d="M8 36C3 22 13 9 32 9c19 0 29 12 24 26-5 14-17 20-27 20-10 0-17-6-21-19z" fill="#ffb938" stroke="#17120c" stroke-width="4" stroke-linejoin="round"/><path d="M15 34c-2-10 6-18 17-18s18 8 15 17c-3 9-11 13-19 13s-11-4-13-12z" fill="#ffd978"/><circle cx="25" cy="31" r="3.4" fill="#17120c"/><circle cx="39" cy="31" r="3.4" fill="#17120c"/><path d="M25 40c4 4 10 4 14 0" fill="none" stroke="#17120c" stroke-width="3.2" stroke-linecap="round"/><path d="M44 8c6-3 12 1 11 8-6 2-12-2-11-8z" fill="#7be0a9" stroke="#17120c" stroke-width="3" stroke-linejoin="round"/><path d="M46 52c6-1 10 3 9 8-6 1-10-3-9-8z" fill="#ffe27a" stroke="#17120c" stroke-width="3" stroke-linejoin="round"/></svg>
 </svg>
