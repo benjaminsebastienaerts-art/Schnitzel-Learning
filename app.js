@@ -142,7 +142,7 @@ function confetti(n = 140) {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const cv = document.getElementById("confetti"), ctx = cv.getContext("2d");
   cv.width = innerWidth; cv.height = innerHeight;
-  const cols = ["#ff5a45", "#ffd84a", "#7be0a9", "#7cc8ff", "#ff9ec7", "#c9a7ff"];
+  const cols = ["#E06D3B", "#008080", "#005F6A", "#BFE3DA", "#F8CDB8", "#AFD6D9"];
   const ps = Array.from({ length: n }, () => ({ x: cv.width / 2 + (Math.random() - .5) * 120, y: cv.height * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 3, r: Math.random() * 6 + 4, c: cols[(Math.random() * cols.length) | 0], a: Math.random() * 6, va: (Math.random() - .5) * .4 }));
   const t0 = performance.now();
   (function frame(t) {
@@ -218,7 +218,7 @@ let session = null;
 let draft = { name: "", langA: "Nederlands", langB: "", chName: "", paste: "" };
 
 const LOGO = `<svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 36C3 22 13 9 32 9c19 0 29 12 24 26-5 14-17 20-27 20-10 0-17-6-21-19z" fill="#ffb938" stroke="#17120c" stroke-width="4" stroke-linejoin="round"/><path d="M15 34c-2-10 6-18 17-18s18 8 15 17c-3 9-11 13-19 13s-11-4-13-12z" fill="#ffd978"/><circle cx="25" cy="31" r="3.4" fill="#17120c"/><circle cx="39" cy="31" r="3.4" fill="#17120c"/><path d="M25 40c4 4 10 4 14 0" fill="none" stroke="#17120c" stroke-width="3.2" stroke-linecap="round"/><path d="M44 8c6-3 12 1 11 8-6 2-12-2-11-8z" fill="#7be0a9" stroke="#17120c" stroke-width="3" stroke-linejoin="round"/><path d="M46 52c6-1 10 3 9 8-6 1-10-3-9-8z" fill="#ffe27a" stroke="#17120c" stroke-width="3" stroke-linejoin="round"/></svg>`;
-const FLAME = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-7 2-11z" fill="#ff5a45" stroke="#17120c" stroke-width="2" stroke-linejoin="round"/></svg>`;
+const FLAME = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-7 2-11z" fill="#E06D3B" stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round"/></svg>`;
 
 function shell(inner) {
   const li = levelInfo(), sk = currentStreak();
