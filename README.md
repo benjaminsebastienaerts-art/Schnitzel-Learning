@@ -63,4 +63,4 @@ Complete woordenlijsten uit schoolboeken staan er niet vooraf in. Die komen uit 
 
 ## Nieuwe versie uitrollen
 
-Pas je iets aan, verhoog dan `CACHE_VERSION` bovenin `sw.js` (bijv. `schnitzel-v4`). Anders blijven bestaande gebruikers de oude versie uit hun cache zien. Een open app laat de nieuwe versie pas zien na één keer verversen.
+Pas je zelf iets aan, verhoog dan `CACHE_VERSION` bovenin `sw.js` (bijv. `schnitzel-v4`). Anders blijf je de oude versie zien. Een open app laat de nieuwe versie pas zien na één keer verversen.
