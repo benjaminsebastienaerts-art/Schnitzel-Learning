@@ -4,37 +4,37 @@
   --dots: transparent;
   --card: #FFFFFF;
   --ink: #1A1A1A;
-  --muted: #4A5A5C;
-  --edge: #005F6A;
-  --shadow: rgba(0, 95, 106, .18);
+  --muted: #485C5A;
+  --edge: #005454;
+  --shadow: rgba(0, 84, 84, .18);
   --field: #F3F8F8;
-  --c1: #F8CDB8; --c2: #BFE3DA; --c3: #CBE5E8; --c4: #E4EEEE; --c5: #AFD6D9;
+  --c1: #F8CDB8; --c2: #BFE3DA; --c3: #CBE6E3; --c4: #E4EEEE; --c5: #AFD8D2;
   --hot: #E06D3B;
-  --accent: #008080;
+  --accent: #006E6E;
   --good: #BFE3DA; --near: #F7E3A8; --bad: #F5B5A6;
   --on-fill: #1A1A1A;
   --paper: #FFFFFF;                /* vaste lichte kleur voor knoppen/labels op gekleurde vlakken */
   --rim: #CBD8D8;                  /* rand van de blokken zelf */
-  --rim-shadow: rgba(0, 95, 106, .12);
+  --rim-shadow: rgba(0, 84, 84, .12);
   --line: #CBD8D8;                 /* zachtere rand voor rustige panelen */
-  --line-shadow: rgba(0, 95, 106, .12);
-  --line-strong: #7FA9AD;          /* velden en keuzeknoppen */
+  --line-shadow: rgba(0, 84, 84, .12);
+  --line-strong: #7FADA8;          /* velden en keuzeknoppen */
   --font-display: "Poppins", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0E1A1C; --card: #16282B; --ink: #EAF2F2; --muted: #A8BEC0; --edge: #5FA8AD; --shadow: rgba(0, 0, 0, .45);
-    --field: #112023; --hot: #F0814F; color-scheme: dark;
-    --rim: #2C4448; --rim-shadow: rgba(0, 0, 0, .35);
-    --line: #2C4448; --line-shadow: rgba(0, 0, 0, .35); --line-strong: #4B7377;
+    --bg: #0D1B1B; --card: #152928; --ink: #EAF2F2; --muted: #A8C2BF; --edge: #5FB0AB; --shadow: rgba(0, 0, 0, .45);
+    --field: #102322; --hot: #F0814F; color-scheme: dark;
+    --rim: #2B4745; --rim-shadow: rgba(0, 0, 0, .35);
+    --line: #2B4745; --line-shadow: rgba(0, 0, 0, .35); --line-strong: #4A7673;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0E1A1C; --card: #16282B; --ink: #EAF2F2; --muted: #A8BEC0; --edge: #5FA8AD; --shadow: rgba(0, 0, 0, .45);
-  --field: #112023; --hot: #F0814F; color-scheme: dark;
-  --rim: #2C4448; --rim-shadow: rgba(0, 0, 0, .35);
-  --line: #2C4448; --line-shadow: rgba(0, 0, 0, .35); --line-strong: #4B7377;
+  --bg: #0D1B1B; --card: #152928; --ink: #EAF2F2; --muted: #A8C2BF; --edge: #5FB0AB; --shadow: rgba(0, 0, 0, .45);
+  --field: #102322; --hot: #F0814F; color-scheme: dark;
+  --rim: #2B4745; --rim-shadow: rgba(0, 0, 0, .35);
+  --line: #2B4745; --line-shadow: rgba(0, 0, 0, .35); --line-strong: #4A7673;
 }
 * { box-sizing: border-box; }
 body {
@@ -54,7 +54,7 @@ button { cursor: pointer; }
 .sticker { background: var(--card); border: 2px solid var(--rim); border-radius: 16px; box-shadow: 0 8px 24px var(--rim-shadow); }
 .sticker.panel:not(.q), .sticker.chapter, .sticker.empty { border-color: var(--line); box-shadow: 0 8px 24px var(--line-shadow); }
 /* Felle vlakken: alles erin gedraagt zich als in de lichte modus (donkere tekst, witte knoppen), ook in de donkere modus */
-.levelcard, .subject, .q, .score, .face, .feedback { --card: var(--paper); --ink: #1A1A1A; --edge: #005F6A; --shadow: rgba(0, 95, 106, .18); --field: #F3F8F8; }
+.levelcard, .subject, .q, .score, .face, .feedback { --card: var(--paper); --ink: #1A1A1A; --edge: #005454; --shadow: rgba(0, 84, 84, .18); --field: #F3F8F8; }
 .btn {
   background: var(--card); border: 2px solid var(--edge); border-radius: 14px; box-shadow: 0 2px 6px var(--shadow);
   padding: 8px 16px; min-height: 46px; font-weight: 700; transition: transform .08s, box-shadow .08s;
@@ -93,7 +93,7 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px co
 .pill.snd { background: var(--card); min-height: 0; }
 
 .levelcard { padding: 16px; display: flex; flex-direction: column; gap: 10px; background: var(--c3); color: var(--on-fill); }
-.levelcard .lbl { color: #3E5457; }
+.levelcard .lbl { color: #3C5755; }
 .levelcard h2 { font-size: 26px; }
 .bar { height: 18px; border: 2px solid var(--edge); border-radius: 99px; background: var(--card); overflow: hidden; }
 .bar i { display: block; height: 100%; background: var(--accent); border-right: 2px solid var(--edge); transition: width .5s; min-width: 0; }
@@ -161,7 +161,7 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px co
 .combo { background: var(--c1); color: #1A1A1A; animation: pop .35s; }
 @keyframes pop { 0% { transform: scale(.6); } 60% { transform: scale(1.2); } 100% { transform: scale(1); } }
 .q { text-align: center; padding: 30px 16px; display: flex; flex-direction: column; gap: 8px; align-items: center; background: var(--c3); color: var(--on-fill); }
-.q .lbl { color: #3E5457; }
+.q .lbl { color: #3C5755; }
 .word { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 10vw, 58px); line-height: 1.05; overflow-wrap: anywhere; }
 .answerrow { display: flex; gap: 12px; flex-wrap: wrap; }
 .answerrow input { flex: 1 1 200px; font-size: 22px; min-height: 56px; }
@@ -182,12 +182,12 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px co
 .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; padding: 20px; text-align: center; color: var(--on-fill); }
 .face.front { background: var(--c3); }
 .face.back { background: var(--c4); transform: rotateY(180deg); }
-.face .lbl { color: #3E5457; }
+.face .lbl { color: #3C5755; }
 .cardbtns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .cardbtns .btn { min-height: 56px; font-size: 18px; }
 
 .score { text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; padding: 22px 16px; background: var(--c2); color: var(--on-fill); }
-.score .lbl { color: #3E5457; }
+.score .lbl { color: #3C5755; }
 .score .big { font-family: var(--font-display); font-weight: 700; font-size: clamp(56px, 18vw, 96px); line-height: 1; font-variant-numeric: tabular-nums; }
 .score .logo { width: 92px; height: 92px; animation: wig 1.2s ease-in-out infinite; }
 @keyframes wig { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg) scale(1.06); } }

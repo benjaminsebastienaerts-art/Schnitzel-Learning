@@ -142,7 +142,7 @@ function confetti(n = 140) {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const cv = document.getElementById("confetti"), ctx = cv.getContext("2d");
   cv.width = innerWidth; cv.height = innerHeight;
-  const cols = ["#E06D3B", "#008080", "#005F6A", "#BFE3DA", "#F8CDB8", "#AFD6D9"];
+  const cols = ["#E06D3B", "#006E6E", "#005454", "#BFE3DA", "#F8CDB8", "#AFD8D2"];
   const ps = Array.from({ length: n }, () => ({ x: cv.width / 2 + (Math.random() - .5) * 120, y: cv.height * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 3, r: Math.random() * 6 + 4, c: cols[(Math.random() * cols.length) | 0], a: Math.random() * 6, va: (Math.random() - .5) * .4 }));
   const t0 = performance.now();
   (function frame(t) {
