@@ -200,3 +200,51 @@ input[type=text]:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px co
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Look "geel": de originele stickerstijl, te kiezen in de app ---------- */
+:root[data-look="geel"] {
+  --bg: #ffd84a; --dots: #f0c426; --card: #fffdf5; --ink: #17120c; --muted: #5d5444; --edge: #17120c; --shadow: #17120c; --field: #fff6d6;
+  --c1: #ff8a5c; --c2: #7be0a9; --c3: #7cc8ff; --c4: #ff9ec7; --c5: #c9a7ff;
+  --hot: #ff5a45; --accent: #ff5a45; --good: #7be0a9; --near: #ffe27a; --bad: #ff9a8a;
+  --paper: #fffdf5; --rim: var(--edge); --rim-shadow: var(--shadow); --line: var(--edge); --line-shadow: var(--shadow); --line-strong: var(--edge);
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-look="geel"]:not([data-theme="light"]) {
+    --bg: #2a2218; --dots: #362c1f; --card: #3a3024; --ink: #fbf3df; --muted: #d2c7b0; --edge: #fbf3df; --shadow: #17110a;
+    --field: #2e251a; --hot: #ff6b57; --accent: #ff6b57; --rim: var(--edge); --rim-shadow: #947a38;
+    --line: #6a5b44; --line-shadow: #17110a; --line-strong: #a99a78;
+  }
+}
+:root[data-look="geel"][data-theme="dark"] {
+  --bg: #2a2218; --dots: #362c1f; --card: #3a3024; --ink: #fbf3df; --muted: #d2c7b0; --edge: #fbf3df; --shadow: #17110a;
+  --field: #2e251a; --hot: #ff6b57; --accent: #ff6b57; --rim: var(--edge); --rim-shadow: #947a38;
+  --line: #6a5b44; --line-shadow: #17110a; --line-strong: #a99a78;
+}
+:root[data-look="geel"] body { background-image: radial-gradient(var(--dots) 2px, transparent 2.5px); background-size: 22px 22px; }
+:root[data-look="geel"] .levelcard, :root[data-look="geel"] .subject, :root[data-look="geel"] .q,
+:root[data-look="geel"] .score, :root[data-look="geel"] .face, :root[data-look="geel"] .feedback {
+  --card: var(--paper); --ink: #17120c; --edge: #17120c; --shadow: #17120c; --field: #fff6d6;
+}
+:root[data-look="geel"] .levelcard .lbl, :root[data-look="geel"] .q .lbl, :root[data-look="geel"] .face .lbl { color: #3a3224; }
+:root[data-look="geel"] .score .lbl { color: #2b3a2f; }
+:root[data-look="geel"] h1, :root[data-look="geel"] h2, :root[data-look="geel"] h3,
+:root[data-look="geel"] .brand-name, :root[data-look="geel"] .word, :root[data-look="geel"] .score .big, :root[data-look="geel"] .feedback strong { font-weight: 800; }
+:root[data-look="geel"] .sticker { border-width: 3px; border-radius: 18px; box-shadow: 5px 5px 0 var(--rim-shadow); }
+:root[data-look="geel"] .sticker.panel:not(.q), :root[data-look="geel"] .sticker.chapter, :root[data-look="geel"] .sticker.empty { box-shadow: 5px 5px 0 var(--line-shadow); }
+:root[data-look="geel"] .btn { border-width: 3px; box-shadow: 3px 3px 0 var(--shadow); }
+:root[data-look="geel"] .btn:hover { box-shadow: 4px 4px 0 var(--shadow); }
+:root[data-look="geel"] .btn:active { box-shadow: 0 0 0 var(--shadow); }
+:root[data-look="geel"] .btn.flat { box-shadow: none; }
+:root[data-look="geel"] .btn:disabled { box-shadow: 3px 3px 0 var(--shadow); }
+:root[data-look="geel"] .pill, :root[data-look="geel"] .bar, :root[data-look="geel"] .preview { border-width: 3px; }
+:root[data-look="geel"] .bar i { border-right-width: 3px; }
+:root[data-look="geel"] .bar.slim { border-width: 2px; }
+:root[data-look="geel"] .bar.slim i { border-right-width: 2px; }
+:root[data-look="geel"] input[type=text], :root[data-look="geel"] textarea, :root[data-look="geel"] .choice span { border-width: 3px; }
+:root[data-look="geel"] .wordrow input { border-width: 2px; }
+:root[data-look="geel"] input[type=text]:focus, :root[data-look="geel"] textarea:focus { box-shadow: 4px 4px 0 var(--hot); }
+:root[data-look="geel"] .choice input:checked + span { box-shadow: 3px 3px 0 var(--shadow); }
+:root[data-look="geel"] .cbody { border-top-width: 3px; }
+:root[data-look="geel"] :focus-visible { outline: 4px solid var(--hot); }

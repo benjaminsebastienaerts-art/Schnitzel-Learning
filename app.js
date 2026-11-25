@@ -15,7 +15,7 @@ function migrate(s) {
     l.chapters.forEach(c => c.words.forEach(w => { w.box = w.box || 0; }));
   });
   s.stats = Object.assign({ xp: 0, streak: 0, best: 0, lastDay: "", answered: 0, correct: 0 }, s.stats || {});
-  s.settings = Object.assign({ strict: false, sound: true }, s.settings || {});
+  s.settings = Object.assign({ strict: false, sound: true, look: "teal" }, s.settings || {});
   return s;
 }
 function seed() {
@@ -54,6 +54,20 @@ let state = null;
 try { state = migrate(JSON.parse(localStorage.getItem(LS_KEY) || "null")); } catch (e) { state = null; }
 if (!state) { try { state = fromLegacy(); } catch (e) { state = null; } }
 if (!state) state = seed();
+
+/* Look: "teal" (rustig) of "geel" (stickers). De keuze staat in de instellingen en geldt direct. */
+const LOOKS = {
+  teal: { name: "Teal", light: "#F7F9F9", dark: "#0D1B1B" },
+  geel: { name: "Geel", light: "#ffd84a", dark: "#2a2218" }
+};
+function applyLook() {
+  const k = LOOKS[state.settings.look] ? state.settings.look : "teal";
+  document.documentElement.dataset.look = k;
+  const metas = document.querySelectorAll('meta[name="theme-color"]');
+  if (metas[0]) metas[0].content = LOOKS[k].light;
+  if (metas[1]) metas[1].content = LOOKS[k].dark;
+}
+applyLook();
 
 const syncLabel = "Opgeslagen op dit apparaat";
 function save() {
@@ -142,7 +156,7 @@ function confetti(n = 140) {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const cv = document.getElementById("confetti"), ctx = cv.getContext("2d");
   cv.width = innerWidth; cv.height = innerHeight;
-  const cols = ["#E06D3B", "#006E6E", "#005454", "#BFE3DA", "#F8CDB8", "#AFD8D2"];
+  const cols = state.settings.look === "geel" ? ["#ff5a45", "#ffd84a", "#7be0a9", "#7cc8ff", "#ff9ec7", "#c9a7ff"] : ["#E06D3B", "#006E6E", "#005454", "#BFE3DA", "#F8CDB8", "#AFD8D2"];
   const ps = Array.from({ length: n }, () => ({ x: cv.width / 2 + (Math.random() - .5) * 120, y: cv.height * .35, vx: (Math.random() - .5) * 14, vy: -Math.random() * 14 - 3, r: Math.random() * 6 + 4, c: cols[(Math.random() * cols.length) | 0], a: Math.random() * 6, va: (Math.random() - .5) * .4 }));
   const t0 = performance.now();
   (function frame(t) {
@@ -227,6 +241,7 @@ function shell(inner) {
     <div class="chips">
       <span class="pill fire" title="Dagen op rij geoefend">${FLAME}${sk}</span>
       <span class="pill lvl" title="Je level">Lv ${li.L}</span>
+      <button class="pill snd" data-act="look" title="Wissel van look">Look: ${(LOOKS[state.settings.look] || LOOKS.teal).name}</button>
       <button class="pill snd" data-act="sound" aria-pressed="${state.settings.sound}">Geluid ${state.settings.sound ? "aan" : "uit"}</button>
     </div></div>${inner}
     <div class="hint" id="sync" style="text-align:center">${esc(syncLabel)}</div>`;
@@ -470,6 +485,7 @@ document.addEventListener("click", e => {
   switch (act) {
     case "home": session = null; backupMsg = ""; pendingRestore = null; view = { name: "home" }; render(); break;
     case "open": session = null; view = { name: "list", id: t.dataset.id || view.id, prefs: view.prefs, open: null }; render(); window.scrollTo(0, 0); break;
+    case "look": state.settings.look = state.settings.look === "geel" ? "teal" : "geel"; applyLook(); save(); render(); break;
     case "sound": state.settings.sound = !state.settings.sound; save(); render(); break;
     case "export": exportBackup(); render(); break;
     case "restore": document.getElementById("restore").click(); break;

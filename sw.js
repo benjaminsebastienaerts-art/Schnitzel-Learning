@@ -1,6 +1,6 @@
 // Service worker: zorgt dat Schnitzel Learning ook zonder internet opent.
 // Verhoog CACHE_VERSION bij elke wijziging aan de app, dan krijgt iedereen de nieuwe versie.
-const CACHE_VERSION = "schnitzel-v5";
+const CACHE_VERSION = "schnitzel-v6";
 
 const APP_SHELL = [
   "./",
